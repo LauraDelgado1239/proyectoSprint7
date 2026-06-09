@@ -1,28 +1,33 @@
-# Vehicle Listings Data Analysis
+# Anuncios de Venta de Coches en EE. UU.
 
-An exploratory data analysis (EDA) project on US vehicle listings, with an interactive web app built with Streamlit.
+Aplicación web interactiva para explorar el conjunto de datos de anuncios de venta de coches usados en Estados Unidos.
 
-## Description
+## Descripción
 
-This project analyzes a dataset of used car listings in the United States. It includes:
-- Exploratory data analysis in a Jupyter notebook
-- An interactive web app for visualizing the data
+La aplicación permite al usuario visualizar dos aspectos del conjunto de datos mediante casillas de verificación:
 
-## Tech Stack
+- **Histograma del odómetro**: muestra la distribución del kilometraje de los vehículos anunciados.
+- **Gráfico de dispersión (odómetro vs precio)**: permite explorar la relación entre el kilometraje y el precio de venta de los vehículos.
+
+El análisis exploratorio de datos completo se encuentra en el notebook `notebooks/EDA.ipynb`.
+
+## Tecnologías utilizadas
 
 - Python
 - Pandas
 - Plotly
 - Streamlit
 
-## How to Run
+## Cómo ejecutar la aplicación
 
-1. Install dependencies:
+1. Instala las dependencias:
    ```
    pip install -r requirements.txt
    ```
 
-2. Run the Streamlit app:
+2. Ejecuta la aplicación:
    ```
    streamlit run app.py
    ```
+
+3. Abre el navegador en `http://localhost:8501`

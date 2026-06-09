@@ -1,24 +1,24 @@
 import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
-df = pd.read_csv('vehicles_us.csv')
+car_data = pd.read_csv('vehicles_us.csv')
 
-st.header('US Vehicle Listings — Data Explorer')
+st.header('Anuncios de venta de coches en EE. UU.')
+st.write('Explora la distribución del odómetro y la relación entre odómetro y precio.')
 
-st.subheader('Price Distribution')
-price_hist = st.checkbox('Show price histogram', value=True)
-if price_hist:
-    fig = px.histogram(df, x='price', nbins=50, range_x=[0, 100000],
-                       title='Distribution of Vehicle Prices',
-                       labels={'price': 'Price (USD)'})
+build_histogram = st.checkbox('Construir un histograma')
+
+if build_histogram:
+    st.write('Creación de un histograma para el conjunto de datos de anuncios de venta de coches')
+    fig = go.Figure(data=[go.Histogram(x=car_data['odometer'])])
+    fig.update_layout(title_text='Distribución del Odómetro')
     st.plotly_chart(fig, use_container_width=True)
 
-st.subheader('Price vs Odometer')
-scatter = st.checkbox('Show scatter plot', value=True)
-if scatter:
-    fig = px.scatter(df, x='odometer', y='price', color='condition',
-                     range_y=[0, 100000], opacity=0.4,
-                     title='Price vs Odometer by Condition',
-                     labels={'odometer': 'Odometer (miles)', 'price': 'Price (USD)'})
+build_scatter = st.checkbox('Construir un gráfico de dispersión')
+
+if build_scatter:
+    st.write('Creación de un gráfico de dispersión: odómetro vs precio')
+    fig = go.Figure(data=[go.Scatter(x=car_data['odometer'], y=car_data['price'], mode='markers')])
+    fig.update_layout(title_text='Relación entre Odómetro y Precio')
     st.plotly_chart(fig, use_container_width=True)
